@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row clas="container">
+        <span class="container d-flex align-items-center justify-content-between">
+            <span>{{ title }}</span>
+            <span class="example-spacer"></span>
+
+            @if(isMainPage) {
+            <button mat-button class="example-icon" aria-label="Crear nuevo héroe" routerLink="nuevo-heroe">
+                <mat-icon>add</mat-icon>
+                Nuevo héroe
+            </button>
+            } @else {
+            <button mat-button class="example-icon" aria-label="Volver a la consulta de héroes" routerLink="">
+                <mat-icon>arrow_back</mat-icon>
+                Volver
+            </button>
+            }
+        </span>
+    </mat-toolbar-row>
+</mat-toolbar>

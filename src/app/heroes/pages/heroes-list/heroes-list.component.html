@@ -1,0 +1,33 @@
+<form>
+    <mat-form-field class="search-field w-100">
+        <input matInput placeholder="Buscar por nombre..." [formControl]="searchField">
+        <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+
+</form>
+
+@if(!errors) {
+@if(showHeroes) {
+@if(heroesList.length){
+<div class="row gx-2 gy-3 pb-2">
+    @for(hero of heroesList; track hero.id) {
+    <div class="col-4">
+        <app-hero-card [hero]="hero" (refresh)="getHeroes()"></app-hero-card>
+    </div>
+    }
+</div>
+} @else {
+<mat-card>
+    <mat-card-content>No existen resultados para la búsqueda realizada</mat-card-content>
+</mat-card>
+
+}
+} @else {
+<mat-spinner class="mx-auto"></mat-spinner>
+}
+} @else {
+<mat-card>
+    <mat-card-content>Parece que hay un problema, inténtelo más tarde</mat-card-content>
+</mat-card>
+
+}

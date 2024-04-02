@@ -1,0 +1,20 @@
+<mat-card class="example-card ">
+    <mat-card-header class="justify-content-between">
+        <mat-card-title>{{ hero.name | capitalize }}</mat-card-title>
+        <mat-card-subtitle>{{ hero.realName | titlecase }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <img mat-card-image [src]="hero.image" (error)="hero.image = 'assets/images/heroes/no-image.png'">
+
+    <mat-card-content class="pt-2">
+        <p>{{ hero.creator | titlecase }}</p>
+        <mat-chip>
+            {{ hero.mainAbility }}
+        </mat-chip>
+    </mat-card-content>
+
+    <mat-card-actions class="justify-content-between">
+        <button mat-button color="primary" (click)="editHero(hero)">Editar</button>
+        <button mat-button color="warn" (click)="deleteHero(hero)">Eliminar</button>
+    </mat-card-actions>
+</mat-card>

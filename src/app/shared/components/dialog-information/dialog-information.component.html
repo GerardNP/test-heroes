@@ -1,0 +1,20 @@
+<div class="container container-modal">
+    <div class="row">
+        <div class="col-12">
+            <h2>{{ data.title }}</h2>
+        </div>
+
+        <div class="col-12 ">
+            <p class="content" [innerHTML]="data.content"></p>
+        </div>
+
+        <div class="col-12 d-flex justify-content-end">
+            <button *ngIf="data.firstButton" mat-button color="accent" (click)="closeDialog()">
+                {{ (data.firstButton) }}
+            </button>
+            <button *ngIf="data.secondButton" mat-button color="primary"  class="ms-1" (click)="sendResponse()" cdkFocusInitial>
+                {{ ( data.secondButton) }}
+            </button>
+        </div>
+    </div>
+</div>

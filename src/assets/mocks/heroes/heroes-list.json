@@ -1,0 +1,106 @@
+[
+    {
+        "heroId": 1,
+        "heroName": "Spider-Man",
+        "realName": "Peter Parker",
+        "primaryPower": "Sentido arácnido",
+        "createdBy": "Marvel",
+        "imageURL": "https://mfiles.alphacoders.com/985/985032.jpg"
+    },
+    {
+        "heroId": 2,
+        "heroName": "Iron Man",
+        "realName": "Tony Stark",
+        "primaryPower": "Intelecto de nivel genio",
+        "createdBy": "Marvel",
+        "imageURL": "https://w0.peakpx.com/wallpaper/444/525/HD-wallpaper-ironman-iron-man.jpg"
+    },
+    {
+        "heroId": 3,
+        "heroName": "Wonder Woman",
+        "realName": "Diana Prince",
+        "primaryPower": "Fuerza sobrehumana",
+        "createdBy": "DC",
+        "imageURL": "https://e1.pxfuel.com/desktop-wallpaper/820/91/desktop-wallpaper-wonder-woman-dc-comics-dc-wonder-woman-superhero.jpg"
+    },
+    {
+        "heroId": 4,
+        "heroName": "Superman",
+        "realName": "Clark Kent",
+        "primaryPower": "Fuerza sobrehumana",
+        "createdBy": "DC",
+        "imageURL": "https://i.pinimg.com/736x/39/cd/3a/39cd3afeb7f010fcf07a5f6aca9d658e.jpg"
+    },
+    {
+        "heroId": 5,
+        "heroName": "Batman",
+        "realName": "Bruce Wayne",
+        "primaryPower": "Intelecto de nivel genio",
+        "createdBy": "DC",
+        "imageURL": "https://moviecomicswhoswho.files.wordpress.com/2013/01/batmancomics2.jpg"
+    },
+    {
+        "heroId": 6,
+        "heroName": "Captain America",
+        "realName": "Steve Rogers",
+        "primaryPower": "Fuerza sobrehumana",
+        "createdBy": "Marvel",
+        "imageURL": "https://i.pinimg.com/564x/be/b7/22/beb7223bab16e1347871ddad19457c08.jpg"
+    },
+    {
+        "heroId": 7,
+        "heroName": "Thor",
+        "realName": "Thor Odinson",
+        "primaryPower": "Control sobre el trueno",
+        "createdBy": "Marvel",
+        "imageURL": "https://w0.peakpx.com/wallpaper/471/405/HD-wallpaper-thor-comics.jpg"
+    },
+    {
+        "heroId": 8,
+        "heroName": "Hulk",
+        "realName": "Bruce Banner",
+        "primaryPower": "Fuerza sobrehumana",
+        "createdBy": "Marvel",
+        "imageURL": "https://i.pinimg.com/736x/f4/ae/8e/f4ae8e640658d19455497f91d501423e.jpg"
+    },
+    {
+        "heroId": 9,
+        "heroName": "Black Widow",
+        "realName": "Natasha Romanoff",
+        "primaryPower": "Experta en artes marciales",
+        "createdBy": "Marvel",
+        "imageURL": "https://example.com/blackwidow.jpg"
+    },
+    {
+        "heroId": 10,
+        "heroName": "The Flash",
+        "realName": "Barry Allen",
+        "primaryPower": "Super velocidad",
+        "createdBy": "DC",
+        "imageURL": "https://www.xtrafondos.com/wallpapers/vertical/lucas-till-concept-art-como-nuevo-flash-11390.jpg"
+    },
+    {
+        "heroId": 11,
+        "heroName": "Green Lantern",
+        "realName": "Hal Jordan",
+        "primaryPower": "Anillo de poder",
+        "createdBy": "DC",
+        "imageURL": "https://i.pinimg.com/736x/bf/55/7e/bf557e236bca7a13169cd984a2b4013e.jpg"
+    },
+    {
+        "heroId": 12,
+        "heroName": "Wolverine",
+        "realName": "Logan",
+        "primaryPower": "Regeneración",
+        "createdBy": "Marvel",
+        "imageURL": "https://www.xtrafondos.com/descargar.php?id=4731&vertical=1"
+    },
+    {
+        "heroId": 13,
+        "heroName": "Black Panther",
+        "realName": "T'Challa",
+        "primaryPower": "Traje de vibranium",
+        "createdBy": "Marvel",
+        "imageURL": "https://coolwallpapers.me/picsup/6094055-black-panther-2018-movies-movies-hd-poster-artist-deviantart.jpg"
+    }
+]

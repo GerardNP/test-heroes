@@ -1,0 +1,84 @@
+<mat-card class="example-card ">
+    <mat-card-content>
+
+        <form [formGroup]="formHero" (ngSubmit)="save()">
+            <div class="row">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-6">
+                            <mat-form-field class="w-100 mb-3">
+                                <mat-label>Nombre</mat-label>
+                                <input matInput formControlName="name">
+                                <mat-error>
+                                    @if(formHero.get('name')?.hasError('required')) {
+                                    Campo obligatorio
+                                    }
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-6">
+                            <mat-form-field class="w-100 mb-3">
+                                <mat-label>Nombre real</mat-label>
+                                <input matInput formControlName="realName">
+                                <mat-error>
+                                    @if(formHero.get('realName')?.hasError('required')) {
+                                    Campo obligatorio
+                                    }
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-12">
+                            <mat-form-field class="w-100 mb-3">
+                                <mat-label>Creador</mat-label>
+                                <input matInput formControlName="creator">
+                                <mat-error>
+                                    @if(formHero.get('creator')?.hasError('required')) {
+                                    Campo obligatorio
+                                    }
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-12">
+                            <mat-form-field class="w-100 mb-3">
+                                <mat-label>Habilidad principal</mat-label>
+                                <input matInput formControlName="mainAbility">
+                                <mat-error>
+                                    @if(formHero.get('mainAbility')?.hasError('required')) {
+                                    Campo obligatorio
+                                    }
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-12">
+                            <mat-form-field class="w-100 mb-3">
+                                <mat-label>URL imagen</mat-label>
+                                <input matInput type="url" formControlName="image" placeholder="https://example.com">
+                                <mat-error>
+                                    @if(formHero.get('image')?.hasError('required')) {
+                                    Campo obligatorio
+                                    }
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-12">
+                            <button mat-button color="primary" type="submit" (click)="save()" class="d-block ms-auto"
+                                [disabled]="!formHero.valid">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <img mat-card-image [src]="imageHero" (error)="imageHero = 'assets/images/heroes/no-image.png'"
+                        class="imageHero">
+                </div>
+            </div>
+
+        </form>
+
+    </mat-card-content>
+</mat-card>
