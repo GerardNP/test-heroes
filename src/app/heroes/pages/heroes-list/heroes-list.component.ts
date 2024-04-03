@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Hero } from '../../../interfaces/heroes/heroes';
-import { HeroesService } from '../../../services/heroes/heroes.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { HeroesService } from '../../services/heroes.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime } from 'rxjs';
+import { Subject, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterModule } from '@angular/router';
@@ -12,7 +11,7 @@ import { HeaderService } from '../../../shared/services/header.service';
 import HeroCardComponent from '../../components/hero-card/hero-card.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { log } from 'console';
+import { Hero } from '../../interfaces/heroes';
 
 @Component({
   selector: 'app-heroes-list',
@@ -31,7 +30,9 @@ import { log } from 'console';
   templateUrl: './heroes-list.component.html',
   styleUrl: './heroes-list.component.scss'
 })
-export default class HeroesListComponent implements OnInit {
+export default class HeroesListComponent implements OnInit, OnDestroy {
+
+  private onDestroy$: Subject<void> = new Subject<void>();
 
   showHeroes: boolean = false;
   errors: boolean = false;
@@ -53,6 +54,11 @@ export default class HeroesListComponent implements OnInit {
     this.handleForm();
   }
 
+  ngOnDestroy(): void {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
+  }
+
   // #region FILTER AND SEARCH
   getHeroes(): void {
     this.showHeroes = false;
@@ -67,7 +73,7 @@ export default class HeroesListComponent implements OnInit {
           this.showHeroes = true;
         }, 500); // Solo para que el spinner sea visible
       }),
-      error: (a) => {
+      error: () => {
         this.errors = false;
       }
     })
@@ -76,6 +82,8 @@ export default class HeroesListComponent implements OnInit {
   private handleForm(): void {
     this.searchField.valueChanges.pipe(
       debounceTime(500),
+      distinctUntilChanged(),
+      takeUntil(this.onDestroy$)
     ).subscribe({
       next: (value) => {
         this.filterHeroesByName(value);

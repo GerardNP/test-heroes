@@ -29,25 +29,25 @@ export class RequestService {
         const url = environment.baseUrlApi + urlService;
         this.headers = new HttpHeaders();
 
-        const service = forceMock ? this.http.get<T>(`assets/mocks/${jsonName}`, { params }) : this.http.post<T>(url, params, { headers: this.headers });
+        const service = forceMock ? this.http.post<T>(`assets/mocks/${jsonName}`, { params }) : this.http.post<T>(url, params, { headers: this.headers });
 
         return service.pipe(catchError(this.handleError));
     }
 
-    put<T>(urlService: string, params?: any): Observable<T> {
+    put<T>(urlService: string, params?: any, forceMock?: boolean, jsonName?: string): Observable<T> {
         const url = environment.baseUrlApi + urlService;
         this.headers = new HttpHeaders();
 
-        const service = this.http.put<T>(url, params, { headers: this.headers });
+        const service = forceMock ? this.http.put<T>(`assets/mocks/${jsonName}`, { params }) : this.http.put<T>(url, params, { headers: this.headers });
 
         return service.pipe(catchError(this.handleError));
     }
 
-    delete<T>(urlService: string, params?: any): Observable<T> {
+    delete<T>(urlService: string, params?: any, forceMock?: boolean, jsonName?: string): Observable<T> {
         const url = environment.baseUrlApi + urlService;
         this.headers = new HttpHeaders();
 
-        const service = this.http.delete<T>(url, {
+        const service = forceMock ? this.http.delete<T>(`assets/mocks/${jsonName}`, { params }) : this.http.delete<T>(url, {
             headers: this.headers,
             body: params
         });

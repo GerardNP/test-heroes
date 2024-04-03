@@ -1,17 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Hero } from '../../../interfaces/heroes/heroes';
 import { MatCardModule } from '@angular/material/card';
 import { TitleCasePipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
-import { HeroesService } from '../../../services/heroes/heroes.service';
+import { HeroesService } from '../../services/heroes.service';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogInformationComponent } from '../../../shared/components/dialog-information/dialog-information.component';
 import { Router } from '@angular/router';
 import { CapitalizePipe } from '../../pipes/capitalize.pipe';
+import { Hero } from '../../interfaces/heroes';
 
 @Component({
   selector: 'app-hero-card',
@@ -37,7 +36,6 @@ export default class HeroCardComponent {
   constructor(
     private heroesService: HeroesService,
     private dialog: MatDialog,
-    private _snackBar: MatSnackBar,
     private router: Router,
   ) { }
 
@@ -58,9 +56,6 @@ export default class HeroCardComponent {
 
         this.heroesService.deleteHero(hero.id!).subscribe({
           next: () => {
-            this._snackBar.open(`${hero.name} ha sido borrado éxitosamente`, 'Cerrar', {
-              duration: 3000
-            });
             this.refresh.emit();
           }
         });

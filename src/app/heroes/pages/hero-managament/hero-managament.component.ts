@@ -1,14 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { HeroesService } from '../../../services/heroes/heroes.service';
+import { HeroesService } from '../../services/heroes.service';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { HeaderService } from '../../../shared/services/header.service';
 import { Router } from '@angular/router';
-import { Hero } from '../../../interfaces/heroes/heroes';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { Hero } from '../../interfaces/heroes';
+import { NotificationsService } from '../../../shared/services/notifications.service';
 
 @Component({
   selector: 'app-hero-managament',
@@ -40,9 +40,9 @@ export default class HeroManagamentComponent {
   constructor(
     private heroesService: HeroesService,
     private fb: FormBuilder,
-    private _snackBar: MatSnackBar,
     private router: Router,
-    private headerService: HeaderService
+    private headerService: HeaderService,
+    private notificationsService: NotificationsService
   ) { }
 
   ngOnInit(): void {
@@ -52,7 +52,7 @@ export default class HeroManagamentComponent {
       this.heroesService.getHero(parseInt(this.heroId)).subscribe({
         next: (hero) => {
           if (!hero) {
-            this._snackBar.open(`No existe un héroe con el id ${this.heroId}`, 'Cerrar');
+            this.notificationsService.show(`No existe un héroe con el id ${this.heroId}`);
             this.router.navigate(['heroes'])
             return;
           }
@@ -94,18 +94,12 @@ export default class HeroManagamentComponent {
     if (!this.hero) {
       this.heroesService.createHero(hero).subscribe({
         next: () => {
-          this._snackBar.open(`${hero.name} ha sido añadido éxitosamente`, 'Cerrar', {
-            duration: 3000
-          });
           this.router.navigate(['heroes'])
         }
       });
     } else {
       this.heroesService.updateHero(hero).subscribe({
         next: () => {
-          this._snackBar.open(`${hero.name} ha sido actualizado éxitosamente`, 'Cerrar', {
-            duration: 3000
-          });
           this.router.navigate(['heroes'])
         }
       });
